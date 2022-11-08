@@ -7,4 +7,10 @@ export default fp(async function (fastify) {
     root: path.join(__dirname, "../public"),
     prefix: "/public/",
   });
+
+  fastify.register(FastifyStatic, {
+    root: path.join(__dirname, "../angular"),
+    prefix: "/angular/",
+    decorateReply: false,
+  });
 });
