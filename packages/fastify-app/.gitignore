@@ -1,0 +1,10 @@
+.env
+dist/
+node_modules/
+!/**/.gitkeep
+
+docker/gitlab/data
+docker/gitea/data
+ngrok.yml
+
+.env
