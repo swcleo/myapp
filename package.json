@@ -4,9 +4,17 @@
   "scripts": {
     "prepare": "husky install"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**@types/jest",
+      "**/@types/jest/*",
+      "**/@types/jasmine",
+      "**/@types/jasmine/*"
+    ]
+  },
   "dependencies": {
     "husky": "^8.0.1"
   },
