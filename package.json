@@ -12,7 +12,9 @@
       "**@types/jest",
       "**/@types/jest/*",
       "**/@types/jasmine",
-      "**/@types/jasmine/*"
+      "**/@types/jasmine/*",
+      "**@vue/cli-plugin-typescript",
+      "**/@vue/cli-plugin-typescript/*"
     ]
   },
   "dependencies": {
