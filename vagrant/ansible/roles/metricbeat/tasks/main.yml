@@ -5,8 +5,7 @@
 
 - name: Install Metricbeat
   ansible.builtin.apt:
-    name: metricbeat
-    update_cache: yes
+    deb: https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-8.5.1-amd64.deb
 
 # ----- Replacing the configuration file
 
