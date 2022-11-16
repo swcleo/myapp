@@ -1,0 +1,6 @@
+---
+- name: Metricbeat
+  hosts: server
+  become: true
+  roles:
+    - ../roles/metricbeat
