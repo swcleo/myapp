@@ -1,0 +1,71 @@
+scalar DateTime
+scalar Date
+
+directive @upper on FIELD_DEFINITION
+directive @rest(url: String) on FIELD_DEFINITION
+directive @date(defaultFormat: String = "mmmm d, yyyy") on FIELD_DEFINITION
+
+directive @auth(requires: Role = ADMIN) on OBJECT | FIELD_DEFINITION
+
+enum Role {
+  ADMIN
+  REVIEWER
+  USER
+  UNKNOWN
+}
+
+type Query {
+  me: User
+  books: [Book]
+  posts(first: Int, after: String, last: Int, before: String): PostConnection!
+  rest: String @rest(url: "https://tw.yahoo.com")
+  today: Date @date
+}
+
+type User {
+  id: ID!
+  email: String!
+  firstName: String @upper
+  lastName: String
+  createdAt: DateTime @auth(requires: ADMIN)
+  updateAt: DateTime @auth(requires: ADMIN)
+}
+
+type Book {
+  title: String
+  author: String
+}
+
+type AddBookMutationResponse {
+  code: String!
+  success: Boolean!
+  message: String!
+  book: Book
+}
+
+type Mutation {
+  addBook(title: String, author: String): AddBookMutationResponse
+}
+
+type PostConnection {
+  edges: [PostEdge!]!
+  pageInfo: PageInfo!
+}
+
+type PostEdge {
+  cursor: String!
+  node: Post!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  totalPageCount: Int
+}
+
+type Post {
+  id: ID!
+  title: String
+  body: String
+  createdAt: String
+}
